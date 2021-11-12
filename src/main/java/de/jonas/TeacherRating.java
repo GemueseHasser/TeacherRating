@@ -1,5 +1,7 @@
 package de.jonas;
 
+import de.jonas.teacherrating.gui.StartGui;
+
 /**
  * Die Haupt- und Main-Klasse der Anwendung, in welcher die gesamte Anwendung initialisiert und gestartet wird.
  */
@@ -13,7 +15,7 @@ public final class TeacherRating {
      * @param args Die Argumente, die von der JRE an diese Anwendung übergeben werden.
      */
     public static void main(final String[] args) {
-
+        new StartGui().open();
     }
     //</editor-fold>
 

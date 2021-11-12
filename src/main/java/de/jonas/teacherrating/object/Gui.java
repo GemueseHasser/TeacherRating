@@ -1,4 +1,4 @@
-package de.jonas.teacherrating;
+package de.jonas.teacherrating.object;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Range;
