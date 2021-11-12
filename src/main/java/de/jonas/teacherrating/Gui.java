@@ -9,13 +9,7 @@ import javax.swing.JFrame;
  * Ein {@link Gui} stellt ein Objekt für ein Fenster dar, welches vererbt werden kann und für eine vereinfachte
  * Instanziierung eines {@link JFrame Fensters} genutzt werden kann.
  */
-public class Gui {
-
-    //<editor-fold desc="LOCAL FIELDS">
-    /** Das Basis-Fenster, auf welches das {@link Gui} aufbaut. */
-    private final JFrame frame;
-    //</editor-fold>
-
+public class Gui extends JFrame {
 
     //<editor-fold desc="CONSTRUCTORS">
 
@@ -33,12 +27,12 @@ public class Gui {
         @Range(from = 0, to = Integer.MAX_VALUE) final int width,
         @Range(from = 0, to = Integer.MAX_VALUE) final int height
     ) {
-        this.frame = new JFrame(title);
+        super(title);
 
-        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.frame.setBounds(0, 0, width, height);
-        this.frame.setLocationRelativeTo(null);
-        this.frame.setLayout(null);
+        super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        super.setBounds(0, 0, width, height);
+        super.setLocationRelativeTo(null);
+        super.setLayout(null);
     }
     //</editor-fold>
 
@@ -47,14 +41,14 @@ public class Gui {
      * Öffnet das bereits instanziierte Fenster.
      */
     public void open() {
-        this.frame.setVisible(true);
+        super.setVisible(true);
     }
 
     /**
      * Schließt das bereits instanziierte Fenster.
      */
     public void close() {
-        this.frame.dispose();
+        super.dispose();
     }
 
 }
