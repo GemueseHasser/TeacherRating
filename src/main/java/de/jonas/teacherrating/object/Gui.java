@@ -17,16 +17,19 @@ import java.awt.RenderingHints;
  * Ein {@link Gui} stellt ein Objekt für ein Fenster dar, welches vererbt werden kann und für eine vereinfachte
  * Instanziierung eines {@link JFrame Fensters} genutzt werden kann.
  */
+@NotNull
 public abstract class Gui extends JFrame {
 
     //<editor-fold desc="CONSTANTS">
     /** Die Standard-Schriftart, die genutzt werden kann. */
+    @NotNull
     public static final Font DEFAULT_FONT = new Font("Arial", Font.BOLD, 20);
     //</editor-fold>
 
 
     //<editor-fold desc="LOCAL FIELDS">
     /** Das {@link Draw Zeichen-Objekt}, welches hinzugefügt werden muss, um die Zeichnung zu realisieren. */
+    @NotNull
     private final Draw draw;
     //</editor-fold>
 
@@ -112,10 +115,12 @@ public abstract class Gui extends JFrame {
     /**
      * Die Klasse, mit dessen Hilfe alle Zeichnungen auf dem {@link Gui} vorgenommen werden.
      */
+    @NotNull
     private final class Draw extends JLabel {
 
         //<editor-fold desc="LOCAL FIELDS">
         /** Die Hintergrund-Farbe, die das {@link Gui} haben soll. */
+        @NotNull
         private final Color background;
         //</editor-fold>
 

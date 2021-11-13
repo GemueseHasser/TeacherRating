@@ -19,10 +19,12 @@ import static java.awt.Color.DARK_GRAY;
  * Ein {@link ResultGui} erbt von dem {@link Gui} und auf dem {@link ResultGui} wird das ausgewertete Ergebnis zu dem
  * Lehrer (je nachdem welche Option man gewählt hat xDD) dargestellt.
  */
+@NotNull
 public final class ResultGui extends Gui implements ActionListener {
 
     //<editor-fold desc="CONSTANTS">
     /** Der Titel des {@link Gui}. */
+    @NotNull
     private static final String TITLE = "Auswertung";
     /** Die Breite des {@link Gui}. */
     private static final int WIDTH = 500;
@@ -33,8 +35,10 @@ public final class ResultGui extends Gui implements ActionListener {
     /** Der normale Zeilenabstand. */
     private static final int DEFAULT_LINE_MARGIN = 10;
     /** Die Position des Akzeptieren-Buttons. */
+    @NotNull
     private static final ObjectLocation ACCEPT_BUTTON_LOCATION = new ObjectLocation(90, 280, 300, 50);
     /** Die Position, an der der Text startet. */
+    @NotNull
     private static final ObjectLocation TEXT_START_LOCATION = new ObjectLocation(20, 30);
     /** Der Abstand zu dem zweiten Teil des Textes. */
     private static final int SECOND_PART_MARGIN = 75;
@@ -43,8 +47,10 @@ public final class ResultGui extends Gui implements ActionListener {
 
     //<editor-fold desc="LOCAL FIELDS">
     /** Der Name des Lehrers. */
+    @NotNull
     private final String name;
     /** Das Fach, welches der Lehrer unterrichtet. */
+    @NotNull
     private final String subject;
     //</editor-fold>
 
@@ -100,6 +106,7 @@ public final class ResultGui extends Gui implements ActionListener {
      *
      * @return die Y-Koordinate für den Text.
      */
+    @Range(from = 0, to = Integer.MAX_VALUE)
     private int getYCoordinate(@Range(from = 0, to = Integer.MAX_VALUE) final int position) {
         return TEXT_START_LOCATION.getPositionY() + (position * (DEFAULT_FONT.getSize() + DEFAULT_LINE_MARGIN));
     }
@@ -142,7 +149,8 @@ public final class ResultGui extends Gui implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(final ActionEvent actionEvent) {
+    public void actionPerformed(@NotNull final ActionEvent actionEvent) {
+        // exit program
         System.exit(0);
     }
     //</editor-fold>

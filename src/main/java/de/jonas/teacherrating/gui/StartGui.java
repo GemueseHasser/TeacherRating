@@ -24,10 +24,12 @@ import static java.awt.Color.LIGHT_GRAY;
  * Ein {@link StartGui} stammt von einem {@link Gui} ab und es stellt das {@link Gui} dar, welches als erstes geöffnet
  * wird, nachdem die Anwendung gestartet wurde.
  */
+@NotNull
 public final class StartGui extends Gui implements ActionListener, KeyListener {
 
     //<editor-fold desc="CONSTANTS">
     /** Der Titel des Fensters. */
+    @NotNull
     private static final String TITLE = "Sammle Daten...";
     /** Die Breite des Fensters. */
     private static final int WIDTH = 750;
@@ -36,10 +38,12 @@ public final class StartGui extends Gui implements ActionListener, KeyListener {
 
     //<editor-fold desc="heading">
     /** Die Schriftart, welche für den Titel genutzt wird. */
+    @NotNull
     private static final Font HEADING_FONT = new Font("Arial", Font.BOLD, 30);
     /** Der Abstand von der Oberen Fenster-Kante, bis der Titel beginnt. */
     private static final int HEADING_MARGIN_TOP = 40;
     /** Alle {@link TextAttribute Attribute}, der {@code HEADING_FONT}. */
+    @NotNull
     private static final Map<TextAttribute, Integer> HEADING_ATTRIBUTES = Map.of(
         TextAttribute.UNDERLINE,
         TextAttribute.UNDERLINE_ON
@@ -48,15 +52,19 @@ public final class StartGui extends Gui implements ActionListener, KeyListener {
 
     //<editor-fold desc="name field">
     /** Die Position, an der sich der Text für das Namens-Feld befindet. */
+    @NotNull
     private static final ObjectLocation NAME_FIELD_TEXT = new ObjectLocation(40, 100);
     /** Die Position, an der sich das Namens-Feld befindet. */
+    @NotNull
     private static final ObjectLocation NAME_FIELD = new ObjectLocation(130, 75, 120, 40);
     //</editor-fold>
 
     //<editor-fold desc="subject field">
     /** Die Position, an der sich der Text für das Auswahlfeld des Fachs befindet. */
+    @NotNull
     private static final ObjectLocation SUBJECT_FIELD_TEXT = new ObjectLocation(40, 180);
     /** Alle Fächer, die als Option zur Auswahl stehen. */
+    @NotNull
     private static final String @NotNull [] SUBJECT_OPTIONS = {
         "Biologie",
         "Chemie",
@@ -80,10 +88,12 @@ public final class StartGui extends Gui implements ActionListener, KeyListener {
         "Sport",
     };
     /** Die Position, an der sich die Auswahl-Box für das Fach befindet. */
+    @NotNull
     private static final ObjectLocation SUBJECT_FIELD = new ObjectLocation(130, 155, 120, 40);
     //</editor-fold>
 
     /** Die Position des Buttons, um seine Auswahl zu bestätigen. */
+    @NotNull
     private static final ObjectLocation CONFIRM_BUTTON = new ObjectLocation(450, 115, 150, 40);
 
     //</editor-fold>
@@ -91,8 +101,10 @@ public final class StartGui extends Gui implements ActionListener, KeyListener {
 
     //<editor-fold desc="LOCAL FIELDS">
     /** Das Text-Feld, wo der Name des Lehrers eingetragen wird. */
+    @NotNull
     private final JTextField textField = new JTextField();
     /** Die Auswahl-Box, wo man das Fach auswählen kann. */
+    @NotNull
     private final JComboBox<String> subjectBox = new JComboBox<>(SUBJECT_OPTIONS);
     //</editor-fold>
 

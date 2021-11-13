@@ -1,10 +1,12 @@
 package de.jonas;
 
 import de.jonas.teacherrating.gui.StartGui;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Die Haupt- und Main-Klasse der Anwendung, in welcher die gesamte Anwendung initialisiert und gestartet wird.
  */
+@NotNull
 public final class TeacherRating {
 
     //<editor-fold desc="setup and start">
