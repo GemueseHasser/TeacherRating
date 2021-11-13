@@ -139,7 +139,7 @@ public final class StartGui extends Gui implements ActionListener {
         final int headingWidth = g.getFontMetrics().stringWidth(super.getTitle());
         final int x = (super.getWidth() / 2) - (headingWidth / 2);
 
-        g.drawString(super.getTitle(), x, HEADING_MARGIN_TOP);
+        g.drawString(TITLE, x, HEADING_MARGIN_TOP);
 
         // draw name field text
         g.setFont(DEFAULT_FONT);
@@ -156,7 +156,14 @@ public final class StartGui extends Gui implements ActionListener {
         // check if name is empty
         if (name.equalsIgnoreCase("")) return;
 
-        // open next window
+        // close current gui
+        this.close();
+
+        // open buggy gui
+        assert subject != null;
+        final BuggyGui buggyGui = new BuggyGui(name, subject);
+
+        buggyGui.open();
     }
     //</editor-fold>
 }
