@@ -124,6 +124,7 @@ public abstract class Gui extends JFrame {
             g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
             g.setColor(Color.BLACK);
+
             Gui.this.draw(g);
         }
         //</editor-fold>
