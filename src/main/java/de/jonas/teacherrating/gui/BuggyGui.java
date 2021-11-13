@@ -7,7 +7,6 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JButton;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Robot;
 import java.awt.event.ActionEvent;
@@ -90,7 +89,7 @@ public final class BuggyGui extends Gui implements ActionListener, MouseListener
             CORRECT_LOCATION.getHeight()
         );
         correct.addActionListener(this);
-        addAttributes(correct);
+        super.addAttributes(correct, DEFAULT_FONT.deriveFont(BUTTON_FONT_SIZE));
 
         final JButton incorrect = new JButton("<html>Ich muss verschiedenes zurückmelden!</html>");
         incorrect.setBounds(
@@ -100,7 +99,7 @@ public final class BuggyGui extends Gui implements ActionListener, MouseListener
             INCORRECT_LOCATION.getHeight()
         );
         incorrect.addMouseListener(this);
-        addAttributes(incorrect);
+        super.addAttributes(incorrect, DEFAULT_FONT.deriveFont(BUTTON_FONT_SIZE));
 
         super.add(correct);
         super.add(incorrect);
@@ -110,20 +109,6 @@ public final class BuggyGui extends Gui implements ActionListener, MouseListener
     }
     //</editor-fold>
 
-
-    /**
-     * Stattet einen bestimmten {@link JButton} mit allen nötigen Attributen aus, welche in diesem Fenster gewünscht
-     * sind, damit er gut aussieht.
-     *
-     * @param button Der {@link JButton}, dem alle nötigen Attribute hinzugefügt werden.
-     */
-    private void addAttributes(@NotNull final JButton button) {
-        button.setFont(DEFAULT_FONT.deriveFont(BUTTON_FONT_SIZE));
-        button.setFocusable(false);
-        button.setOpaque(true);
-        button.setBackground(Color.DARK_GRAY);
-        button.setForeground(Color.WHITE);
-    }
 
     //<editor-fold desc="implementation">
     @Override
@@ -159,7 +144,12 @@ public final class BuggyGui extends Gui implements ActionListener, MouseListener
 
     @Override
     public void actionPerformed(@NotNull final ActionEvent actionEvent) {
+        // close current gui
+        this.close();
+
         // open result gui
+        final ResultGui resultGui = new ResultGui(this.name, this.subject);
+        resultGui.open();
     }
 
     @Override

@@ -3,6 +3,7 @@ package de.jonas.teacherrating.object;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Range;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -82,6 +83,20 @@ public abstract class Gui extends JFrame {
      */
     public void draw() {
         this.add(this.draw);
+    }
+
+    /**
+     * Stattet einen bestimmten {@link JButton} mit allen nötigen Attributen aus, welche in diesem Fenster gewünscht
+     * sind, damit er gut aussieht.
+     *
+     * @param button Der {@link JButton}, dem alle nötigen Attribute hinzugefügt werden.
+     */
+    public void addAttributes(@NotNull final JButton button, @NotNull final Font font) {
+        button.setFont(font);
+        button.setFocusable(false);
+        button.setOpaque(true);
+        button.setBackground(Color.DARK_GRAY);
+        button.setForeground(Color.WHITE);
     }
 
     /**
