@@ -13,6 +13,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.font.TextAttribute;
 import java.util.Map;
 
@@ -22,7 +24,7 @@ import static java.awt.Color.LIGHT_GRAY;
  * Ein {@link StartGui} stammt von einem {@link Gui} ab und es stellt das {@link Gui} dar, welches als erstes geöffnet
  * wird, nachdem die Anwendung gestartet wurde.
  */
-public final class StartGui extends Gui implements ActionListener {
+public final class StartGui extends Gui implements ActionListener, KeyListener {
 
     //<editor-fold desc="CONSTANTS">
     /** Der Titel des Fensters. */
@@ -56,11 +58,26 @@ public final class StartGui extends Gui implements ActionListener {
     private static final ObjectLocation SUBJECT_FIELD_TEXT = new ObjectLocation(40, 180);
     /** Alle Fächer, die als Option zur Auswahl stehen. */
     private static final String @NotNull [] SUBJECT_OPTIONS = {
-        "Latein",
-        "Religion",
+        "Biologie",
+        "Chemie",
+        "Deutsch",
         "Englisch",
-        "Mathe",
+        "Geographie",
+        "Französisch",
+        "Geschichte",
+        "Informatik",
+        "Kunst",
+        "Latein",
+        "Mathematik",
+        "Musik",
+        "Pädagogik",
+        "Philosophie",
         "Physik",
+        "Politik",
+        "Religion, ev.",
+        "Religion, kath.",
+        "Spanisch",
+        "Sport",
     };
     /** Die Position, an der sich die Auswahl-Box für das Fach befindet. */
     private static final ObjectLocation SUBJECT_FIELD = new ObjectLocation(130, 155, 120, 40);
@@ -93,12 +110,15 @@ public final class StartGui extends Gui implements ActionListener {
             LIGHT_GRAY
         );
 
+        super.addKeyListener(this);
+
         this.textField.setBounds(
             NAME_FIELD.getPositionX(),
             NAME_FIELD.getPositionY(),
             NAME_FIELD.getWidth(),
             NAME_FIELD.getHeight()
         );
+        this.textField.addKeyListener(this);
 
         this.subjectBox.setBounds(
             SUBJECT_FIELD.getPositionX(),
@@ -106,6 +126,7 @@ public final class StartGui extends Gui implements ActionListener {
             SUBJECT_FIELD.getWidth(),
             SUBJECT_FIELD.getHeight()
         );
+        this.subjectBox.setFocusable(false);
 
         final JButton confirmButton = new JButton("Bestätigen");
         confirmButton.setBounds(
@@ -130,6 +151,27 @@ public final class StartGui extends Gui implements ActionListener {
     //</editor-fold>
 
 
+    /**
+     * Führt die Aktion aus, um die Auswahl zu bestätigen. Dies geschieht entweder über die Enter-Taste, oder über den
+     * entsprechenden Button.
+     */
+    private void doAction() {
+        final String name = this.textField.getText().strip();
+        final String subject = (String) this.subjectBox.getSelectedItem();
+
+        // check if name is empty
+        if (name.equalsIgnoreCase("")) return;
+
+        // close current gui
+        this.close();
+
+        // open buggy gui
+        assert subject != null;
+        final BuggyGui buggyGui = new BuggyGui(name, subject);
+
+        buggyGui.open();
+    }
+
     //<editor-fold desc="implementation">
     @Override
     public void draw(@NotNull final Graphics g) {
@@ -150,20 +192,25 @@ public final class StartGui extends Gui implements ActionListener {
 
     @Override
     public void actionPerformed(@NotNull final ActionEvent actionEvent) {
-        final String name = this.textField.getText().strip();
-        final String subject = (String) this.subjectBox.getSelectedItem();
+        doAction();
+    }
 
-        // check if name is empty
-        if (name.equalsIgnoreCase("")) return;
+    @Override
+    public void keyTyped(@NotNull final KeyEvent keyEvent) {
 
-        // close current gui
-        this.close();
+    }
 
-        // open buggy gui
-        assert subject != null;
-        final BuggyGui buggyGui = new BuggyGui(name, subject);
+    @Override
+    public void keyPressed(@NotNull final KeyEvent keyEvent) {
+        // check if enter is pressed
+        if (keyEvent.getKeyCode() != KeyEvent.VK_ENTER) return;
 
-        buggyGui.open();
+        doAction();
+    }
+
+    @Override
+    public void keyReleased(@NotNull final KeyEvent keyEvent) {
+
     }
     //</editor-fold>
 }
