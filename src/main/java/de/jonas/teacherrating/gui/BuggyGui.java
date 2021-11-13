@@ -100,7 +100,7 @@ public final class BuggyGui extends Gui implements ActionListener, MouseListener
         correct.addActionListener(this);
         super.addAttributes(correct, DEFAULT_FONT.deriveFont(BUTTON_FONT_SIZE));
 
-        final JButton incorrect = new JButton("<html>Ich muss verschiedenes zurückmelden!</html>");
+        final JButton incorrect = new JButton("<html>Ich muss negatives zurückmelden!</html>");
         incorrect.setBounds(
             INCORRECT_LOCATION.getPositionX(),
             INCORRECT_LOCATION.getPositionY(),
@@ -145,7 +145,7 @@ public final class BuggyGui extends Gui implements ActionListener, MouseListener
         );
 
         g.drawString(
-            "sondern musst zuerst eine Option wählen!",
+            "bevor du eine Option gewählt hast!",
             INFO_TEXT_LOCATION.getPositionX(),
             (int) (INFO_TEXT_LOCATION.getPositionY() + INFO_FONT_SIZE)
         );
