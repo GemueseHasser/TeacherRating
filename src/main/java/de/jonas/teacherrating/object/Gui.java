@@ -1,6 +1,5 @@
 package de.jonas.teacherrating.object;
 
-import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Range;
 
@@ -8,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -18,9 +18,14 @@ import java.awt.RenderingHints;
  */
 public abstract class Gui extends JFrame {
 
+    //<editor-fold desc="CONSTANTS">
+    /** Die Standard-Schriftart, die genutzt werden kann. */
+    public static final Font DEFAULT_FONT = new Font("Arial", Font.BOLD, 20);
+    //</editor-fold>
+
+
     //<editor-fold desc="LOCAL FIELDS">
-    /** Das Zeichen-Objekt, mit dem alles nötige auf dieses {@link Gui} gezeichnet wird. */
-    @Getter
+    /** Das {@link Draw Zeichen-Objekt}, welches hinzugefügt werden muss, um die Zeichnung zu realisieren. */
     private final Draw draw;
     //</editor-fold>
 
@@ -54,8 +59,6 @@ public abstract class Gui extends JFrame {
         this.draw = new Draw(background);
         this.draw.setBounds(0, 0, width, height);
         this.draw.setVisible(true);
-
-        super.add(this.draw);
     }
     //</editor-fold>
 
@@ -72,6 +75,13 @@ public abstract class Gui extends JFrame {
      */
     public void close() {
         super.dispose();
+    }
+
+    /**
+     * Fügt das Zeichen-Objekt des {@link Gui} hinzu. Somit wird dann die Zeichnung realisiert.
+     */
+    public void draw() {
+        this.add(this.draw);
     }
 
     /**
