@@ -81,7 +81,7 @@ public final class ResultGui extends Gui implements ActionListener {
 
         super.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
-        final JButton accept = new JButton("Aufstandslos akzeptieren");
+        final JButton accept = new JButton("uneingeschränkt akzeptieren");
         accept.setBounds(
             ACCEPT_BUTTON_LOCATION.getPositionX(),
             ACCEPT_BUTTON_LOCATION.getPositionY(),
