@@ -91,24 +91,14 @@ public final class BuggyGui extends Gui implements ActionListener, MouseListener
         super.setUndecorated(true);
 
         final JButton correct = new JButton("<html>Ich habe nichts auszusetzen!</html>");
-        correct.setBounds(
-            CORRECT_LOCATION.getPositionX(),
-            CORRECT_LOCATION.getPositionY(),
-            CORRECT_LOCATION.getWidth(),
-            CORRECT_LOCATION.getHeight()
-        );
-        correct.addActionListener(this);
         super.addAttributes(correct, DEFAULT_FONT.deriveFont(BUTTON_FONT_SIZE));
+        super.placeComponent(correct, CORRECT_LOCATION);
+        correct.addActionListener(this);
 
         final JButton incorrect = new JButton("<html>Ich muss negatives zurückmelden!</html>");
-        incorrect.setBounds(
-            INCORRECT_LOCATION.getPositionX(),
-            INCORRECT_LOCATION.getPositionY(),
-            INCORRECT_LOCATION.getWidth(),
-            INCORRECT_LOCATION.getHeight()
-        );
-        incorrect.addMouseListener(this);
         super.addAttributes(incorrect, DEFAULT_FONT.deriveFont(BUTTON_FONT_SIZE));
+        super.placeComponent(incorrect, INCORRECT_LOCATION);
+        incorrect.addMouseListener(this);
 
         super.add(correct);
         super.add(incorrect);

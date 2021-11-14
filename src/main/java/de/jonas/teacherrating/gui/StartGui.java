@@ -124,29 +124,14 @@ public final class StartGui extends Gui implements ActionListener, KeyListener {
 
         super.addKeyListener(this);
 
-        this.textField.setBounds(
-            NAME_FIELD.getPositionX(),
-            NAME_FIELD.getPositionY(),
-            NAME_FIELD.getWidth(),
-            NAME_FIELD.getHeight()
-        );
+        super.placeComponent(this.textField, NAME_FIELD);
         this.textField.addKeyListener(this);
 
-        this.subjectBox.setBounds(
-            SUBJECT_FIELD.getPositionX(),
-            SUBJECT_FIELD.getPositionY(),
-            SUBJECT_FIELD.getWidth(),
-            SUBJECT_FIELD.getHeight()
-        );
+        super.placeComponent(this.subjectBox, SUBJECT_FIELD);
         this.subjectBox.setFocusable(false);
 
         final JButton confirmButton = new JButton("Bestätigen");
-        confirmButton.setBounds(
-            CONFIRM_BUTTON.getPositionX(),
-            CONFIRM_BUTTON.getPositionY(),
-            CONFIRM_BUTTON.getWidth(),
-            CONFIRM_BUTTON.getHeight()
-        );
+        super.placeComponent(confirmButton, CONFIRM_BUTTON);
         confirmButton.setFocusable(false);
         confirmButton.setOpaque(true);
         confirmButton.setBackground(Color.DARK_GRAY);

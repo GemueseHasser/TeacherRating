@@ -82,13 +82,8 @@ public final class ResultGui extends Gui implements ActionListener {
         super.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         final JButton accept = new JButton("uneingeschränkt akzeptieren");
-        accept.setBounds(
-            ACCEPT_BUTTON_LOCATION.getPositionX(),
-            ACCEPT_BUTTON_LOCATION.getPositionY(),
-            ACCEPT_BUTTON_LOCATION.getWidth(),
-            ACCEPT_BUTTON_LOCATION.getHeight()
-        );
         super.addAttributes(accept, DEFAULT_FONT.deriveFont(BUTTON_FONT_SIZE));
+        super.placeComponent(accept, ACCEPT_BUTTON_LOCATION);
         accept.setBackground(Color.LIGHT_GRAY);
         accept.setForeground(Color.BLACK);
         accept.addActionListener(this);
@@ -113,6 +108,7 @@ public final class ResultGui extends Gui implements ActionListener {
 
     //<editor-fold desc="implementation">
     @Override
+    @SuppressWarnings("checkstyle:MagicNumber")
     public void draw(@NotNull final Graphics g) {
         g.setColor(Color.WHITE);
         g.setFont(DEFAULT_FONT);

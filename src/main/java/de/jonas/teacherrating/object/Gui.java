@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -82,17 +83,11 @@ public abstract class Gui extends JFrame {
     }
 
     /**
-     * Fügt das Zeichen-Objekt des {@link Gui} hinzu. Somit wird dann die Zeichnung realisiert.
-     */
-    public void draw() {
-        this.add(this.draw);
-    }
-
-    /**
      * Stattet einen bestimmten {@link JButton} mit allen nötigen Attributen aus, welche in diesem Fenster gewünscht
      * sind, damit er gut aussieht.
      *
      * @param button Der {@link JButton}, dem alle nötigen Attribute hinzugefügt werden.
+     * @param font   Die Schriftart, die der {@link JButton} haben soll.
      */
     public void addAttributes(@NotNull final JButton button, @NotNull final Font font) {
         button.setFont(font);
@@ -100,6 +95,29 @@ public abstract class Gui extends JFrame {
         button.setOpaque(true);
         button.setBackground(Color.DARK_GRAY);
         button.setForeground(Color.WHITE);
+    }
+
+    /**
+     * Platziert einen bestimmten {@link Component Komponenten} an einer bestimmten {@link ObjectLocation Position} auf
+     * dem {@link Gui}.
+     *
+     * @param component Der {@link Component Komponent}, der in dem Fenster platziert werden soll.
+     * @param location  Die {@link ObjectLocation Position}, an der der Komponent platziert werden soll.
+     */
+    public void placeComponent(@NotNull final Component component, @NotNull final ObjectLocation location) {
+        component.setBounds(
+            location.getPositionX(),
+            location.getPositionY(),
+            location.getWidth(),
+            location.getHeight()
+        );
+    }
+
+    /**
+     * Fügt das Zeichen-Objekt des {@link Gui} hinzu. Somit wird dann die Zeichnung realisiert.
+     */
+    public void draw() {
+        this.add(this.draw);
     }
 
     /**
